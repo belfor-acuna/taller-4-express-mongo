@@ -1,4 +1,5 @@
 import Resume from "../models/cv.model.js"
+import User from "../models/user.model.js"
 
 async function addInfoCV(req, res){
     try{
@@ -58,4 +59,39 @@ async function deleteCV(req, res) {
     }
 }
 
-export { addInfoCV, listCV, deleteCV }
+async function addInfoCVAutomatic(req, res){
+    try{
+        const user = User.findById(req.params.userId);
+        const name = user.name;
+        const surname = user.surname;
+        const email = user.email;
+        const address = user.address;
+        const languages = user.languages;
+        const phone = user.phone;
+        const education = user.education;
+        const proficiencies = user.proficiencies;
+        const linkedin = user.linkedin;
+        const jobExperience = user.jobExperience;
+        const userPhoto = user.photo;
+        await Resume.create({
+            userId: user._id,
+            name: name,
+            surname: surname,
+            email: email,
+            address: address,
+            languages: languages,
+            phone: phone,
+            education: education,
+            proficiencies: proficiencies,
+            linkedin: linkedin,
+            jobExperience: jobExperience,
+            photo: userPhoto
+        })
+        return res.status(201).send({ success: true })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send({ success: false, error: error.message });
+    }
+}
+
+export { addInfoCV, listCV, deleteCV, addInfoCVAutomatic }
