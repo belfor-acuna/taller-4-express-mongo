@@ -36,7 +36,7 @@ async function addInfoCV(req, res){
 
 async function listCV(req, res) {
     try {
-        const list = await Resume.find({_id: req.params.userId});
+        const list = await Resume.find({userId: req.params.userId});
         return res.status(200).send({resumesUser: list})
     } catch (error) {
         console.log(error)
