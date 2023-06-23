@@ -76,3 +76,5 @@ async function editUser(req, res) {
         return res.status(500).send({ error: error.message })
     }
 }
+
+export {editUser};
