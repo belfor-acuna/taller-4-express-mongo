@@ -61,7 +61,7 @@ async function deleteCV(req, res) {
 
 async function addInfoCVAutomatic(req, res){
     try{
-        const user = User.findById(req.params.userId);
+        const user = await User.findById(req.params.userId);
         const name = user.name;
         const surname = user.surname;
         const email = user.email;
