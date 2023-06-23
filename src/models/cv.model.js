@@ -76,3 +76,7 @@ const cvSchema = new mongoose.Schema({
         required: false
     }
 });
+
+const cvModel = mongoose.model("CurriculumVitae", cvSchema);
+
+export default cvModel;

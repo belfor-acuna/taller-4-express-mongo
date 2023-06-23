@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 
 async function startSever() {
 	const isConnected = await connectDB();
