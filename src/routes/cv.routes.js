@@ -4,7 +4,7 @@ import { addInfoCV, listCV, deleteCV, addInfoCVAutomatic } from "../contollers/c
 const router = Router();
 
 router.post("/edit/:userId", addInfoCV)
-router.get("/", listCV)
+router.get("/:userId", listCV)
 router.delete("/delete/:cvId", deleteCV)
 router.post("/edit/automatic/:userId", addInfoCVAutomatic)
 
