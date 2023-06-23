@@ -74,7 +74,7 @@ async function addInfoCVAutomatic(req, res){
         const jobExperience = user.jobExperience;
         const userPhoto = user.photo;
         await Resume.create({
-            userId: user._id,
+            userId: req.params.userId,
             name: name,
             surname: surname,
             email: email,

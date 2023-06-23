@@ -16,8 +16,7 @@ async function registerUser(req, res) {
         password: userPassword,
       });
       return res.status(201).send({
-        success: true, message: await User.find()
-      });
+        success: true});
     }catch(error) {
       console.log(error);
       return res.status(500).send({success: false, error: error.message});

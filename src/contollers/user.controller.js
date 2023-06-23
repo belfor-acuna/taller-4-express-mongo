@@ -69,7 +69,7 @@ async function editUser(req, res) {
             }
             return res.status(200).send({ success: true, userToEdit });
         } else {
-            return res.status(404).send({ error: `No existe el usuario con la id ${inputId}` });
+            return res.status(404).send({ error: `No existe el usuario con la id ${paramId}` });
         }
     }
     catch (error) {
