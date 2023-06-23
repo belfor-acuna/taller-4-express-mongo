@@ -2,6 +2,7 @@ import express  from "express";
 
 import userRoutes from "./routes/user.routes.js";
 import cvRoutes from "./routes/cv.routes.js"
+import authRoutes from "./routes/auth.routes.js"
 
 import connectDB from "./configs/mongo.js";
 import {PORT} from "./configs/environments.js";
@@ -11,7 +12,7 @@ app.use(express.json());
 
 app.use("/user", userRoutes);
 app.use("/resumes", cvRoutes);
-
+app.use("/auth", authRoutes);
 
 async function startSever() {
 	const isConnected = await connectDB();
