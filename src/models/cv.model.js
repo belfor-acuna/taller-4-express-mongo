@@ -31,7 +31,7 @@ const cvSchema = new mongoose.Schema({
     },
     education: [{
         date: {
-            type: Date,
+            type: String,
             required: true
         },
         place: {
@@ -48,10 +48,6 @@ const cvSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        place: {
-            type: String,
-            required: true
-        },
         description: {
             type: String,
             required: true
@@ -63,7 +59,7 @@ const cvSchema = new mongoose.Schema({
     },
     jobExperience: [{
         date: {
-            type: Date,
+            type: String,
             required: true
         },
         place: {

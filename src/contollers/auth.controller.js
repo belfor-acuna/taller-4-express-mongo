@@ -7,7 +7,7 @@ async function registerUser(req, res) {
         const userEmail = req.body.email;
         const password = req.body.password;
         const userPassword = bcrypt.hashSync(password, 2);
-        if(!userName) {return res.status(400).send({success: false, error: 'Falta campo nombre'});}
+        if(!username) {return res.status(400).send({success: false, error: 'Falta campo nombre'});}
         if(!userEmail) {return res.status(400).send({success: false, error: 'Falta campo email'});}
         if(!password) {return res.status(400).send({success: false, error: 'Falta campo contraseña'});}
       await User.create({
@@ -16,7 +16,7 @@ async function registerUser(req, res) {
         password: userPassword,
       });
       return res.status(201).send({
-        success: true
+        success: true, message: await User.find()
       });
     }catch(error) {
       console.log(error);
