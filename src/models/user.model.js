@@ -24,17 +24,60 @@ const userSchema = new mongoose.Schema({
 	adress:{
 		type:String,
 	},
-	languages:[{type:String}],
-	phone:{
-		type:String,
-	},
-	education:{
-		
-	},
-	profeciencies:{
-		
-	}
-
+	languages: {
+        type: [String],
+        required: false,
+    },
+    phone: {
+        type: String,
+        required: false,
+    },
+    education: [{
+        date: {
+            type: String,
+            required: true
+        },
+        place: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    }],
+    proficiencies: [{
+        name: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    }],
+    linkedin: {
+        type: String,
+        required: false,
+    },
+    jobExperience: [{
+        date: {
+            type: String,
+            required: true
+        },
+        place: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    }],
+    photo: {
+        type: String,
+        required: false
+    }
 });
 
 const userModel = mongoose.model("User", userSchema);
