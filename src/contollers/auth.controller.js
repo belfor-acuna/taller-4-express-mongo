@@ -10,10 +10,17 @@ async function registerUser(req, res) {
         if(!userName) {return res.status(400).send({success: false, error: 'Falta campo nombre'});}
         if(!userEmail) {return res.status(400).send({success: false, error: 'Falta campo email'});}
         if(!password) {return res.status(400).send({success: false, error: 'Falta campo contraseña'});}
-    }
-    catch (error) {
-        console.log(error)
-        return res.status(500).send({success: false, error: error.message});
+      await User.create({
+        name: userName,
+        email: userEmail,
+        password: userPassword,
+      });
+      return res.status(201).send({
+        success: true
+      });
+    }catch(error) {
+      console.log(error);
+      return res.status(500).send({success: false, error: error.message});
     }
 }
 
