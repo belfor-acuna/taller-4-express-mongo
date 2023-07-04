@@ -23,4 +23,30 @@ async function registerUser(req, res) {
     }
 }
 
-export {registerUser}
+async function loginUser(req, res){
+  try{
+    const inputEmail = req.body.email;
+    const inputPassword = req.body.password;
+    const existingUser = await User.findOne({email: inputEmail});
+    if (!inputEmail){
+      return res.status(400).send({error: 'Falta campo email'});
+    }
+    if (!inputPassword){
+      return res.status(400).send({error: 'Falta campo password'});
+    }
+    if (!existingUser){
+      return res.status(404).send({logged: false});
+    }
+    const isMatch = await bcrypt.compare(inputPassword, existingUser.password);
+    if(isMatch){
+      return res.status(200).send({logged:true});
+    }else{
+      return res.status(401).send({logged:false});
+    }
+  }catch(error){
+    console.log(error);
+    return res.status(500).send({error:error.message});
+  }
+}
+
+export {registerUser, loginUser}
