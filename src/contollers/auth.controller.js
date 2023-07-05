@@ -15,6 +15,7 @@ async function registerUser(req, res) {
         username: username,
         email: userEmail,
         password: userPassword,
+        roles:["User"]
       });
       return res.status(201).send({
         success: true});
