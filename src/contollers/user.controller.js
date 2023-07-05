@@ -1,6 +1,6 @@
 import User from "../models/user.model.js"
 
-async function editUser(req, res) {
+export async function editUser(req, res) {
     try {
         
         const paramId = req.params.userId;
