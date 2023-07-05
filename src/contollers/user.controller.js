@@ -77,4 +77,13 @@ export async function editUser(req, res) {
     }
 }
 
-export {editUser};
+async function getUser(req, res){
+  try{
+    const user = await User.find({userId: req.params.userId});
+    return res.status(200).send({user: user})
+  }catch(error){
+    return res.status(500).send({message:error})
+  }
+}
+
+export {editUser, getUser};
