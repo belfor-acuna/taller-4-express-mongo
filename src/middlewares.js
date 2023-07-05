@@ -10,6 +10,7 @@ export function authRequired(req,res,next){
             throw new Error("Sin token");
         }
         const {id} = verifyToken(token);
+        req.params.adminId = id;
         req.params.userId = id;
         return next();
 
