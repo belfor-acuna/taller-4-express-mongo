@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/user", userRoutes);
-app.use("/resumes", cvRoutes);
+app.use("/user/resumes", cvRoutes);
 app.use("/auth", authRoutes);
 
 async function startSever() {
