@@ -1,6 +1,6 @@
 import User from "../models/user.model.js"
 
-export async function editUser(req, res) {
+async function editUser(req, res) {
     try {
         
         const paramId = req.params.userId;
@@ -79,7 +79,7 @@ export async function editUser(req, res) {
 
 async function getUser(req, res){
   try{
-    const user = await User.find({userId: req.params.userId});
+    const user = await User.findById(req.params.userId);
     return res.status(200).send({user: user})
   }catch(error){
     return res.status(500).send({message:error})
