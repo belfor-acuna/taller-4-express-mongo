@@ -2,16 +2,15 @@ import User from "./models/user.model.js";
 import { verifyToken } from "./utils/jwt.js";
 
 export function authRequired(req,res,next){
-
+    
     const authorizationHeader = req.headers.authorization || req.headers.Authorization;
     try{
-
         const token = authorizationHeader.split(" ")[1];
         if(!token){
             throw new Error("Sin token");
         }
         const {id} = verifyToken(token);
-        req.id = id;
+        req.params.userId = id;
         return next();
 
     }catch(err){
@@ -25,7 +24,7 @@ export function authRequired(req,res,next){
 export function hasRole(role){
 
     return async function(req,res,next){
-        const {roles} = await User.findById(req.id).exec();
+        const {roles} = await User.findById(req.params.userId).exec();
         if(roles.includes(role)){
             return next();
         }
