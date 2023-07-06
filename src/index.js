@@ -1,4 +1,5 @@
 import express  from "express";
+import cors from "cors";
 
 import userRoutes from "./routes/user.routes.js";
 import cvRoutes from "./routes/cv.routes.js"
@@ -10,6 +11,9 @@ import {PORT} from "./configs/environments.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+	origin: 'http://localhost:8080'
+}));
 
 app.use("/user", userRoutes);
 app.use("/user/resumes", cvRoutes);
