@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 	surname:{
 		type:String,
 	},
-	adress:{
+	address:{
 		type:String,
 	},
 	languages: {
