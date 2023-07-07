@@ -5,7 +5,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/:adminId/users", authRequired, hasRole("Admin"), listUsers);
+router.get("/:adminId/users", listUsers);
 router.get("/:adminId/users/:pickedUserId", authRequired, hasRole("Admin"), getUser);
 router.get("/:adminId/users/:pickedUserId/cv", authRequired, hasRole("Admin"), listCV);
 router.delete("/:adminId/:pickedUserId/:cvId", hasRole("Admin"), deleteCV);

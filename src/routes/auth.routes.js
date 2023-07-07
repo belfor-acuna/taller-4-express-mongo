@@ -9,4 +9,5 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/me",authRequired,hasRole("User"),getMe);
 
+
 export default router;

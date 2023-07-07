@@ -7,6 +7,7 @@ export function authRequired(req,res,next){
     try{
         const token = authorizationHeader.split(" ")[1];
         if(!token){
+            
             throw new Error("Sin token");
         }
         const {id} = verifyToken(token);
@@ -25,7 +26,7 @@ export function hasRole(role){
 
     return async function(req,res,next){
         const {roles} = await User.findById(req.params.userId).exec();
-        if(roles.includes(role)){
+        if(roles.includes(role) || roles.includes("Admin")){
             return next();
         }
         return res.status(401).send({error:`Usuario no tiene el rol ${role}`});
