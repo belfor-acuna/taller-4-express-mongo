@@ -7,9 +7,8 @@ export function generateToken(user){
 
     const {_id, email} = user;
     return jsonwebotken.sign({id:_id,email}, SECRET, {
-        expiresIn:"1m",
+        expiresIn:"10m",
     })
-
 }
 
 export function verifyToken(token){

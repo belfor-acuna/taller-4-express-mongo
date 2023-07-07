@@ -14,7 +14,7 @@ async function addInfoCV(req, res){
         const linkedin = req.body.linkedin;
         const jobExperience = req.body.jobExperience;
         const userPhoto = req.body.photo;
-        await Resume.create({
+        const resume = await Resume.create({
             userId: req.params.userId,
             name: name,
             surname: surname,
@@ -28,7 +28,7 @@ async function addInfoCV(req, res){
             jobExperience: jobExperience,
             photo: userPhoto
         })
-        return res.status(201).send({ success: true })
+        return res.status(201).send({ success: true, resume:resume })
     } catch (error) {
         console.log(error)
         return res.status(500).send({ success: false, error: error.message });
